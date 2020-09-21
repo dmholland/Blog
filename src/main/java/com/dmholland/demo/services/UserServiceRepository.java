@@ -3,6 +3,7 @@ package com.dmholland.demo.services;
 import com.dmholland.demo.models.Post;
 import com.dmholland.demo.models.User;
 import com.dmholland.demo.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceRepository implements UserService{
+
+    @Autowired
     UserRepository repository;
 
     @Override

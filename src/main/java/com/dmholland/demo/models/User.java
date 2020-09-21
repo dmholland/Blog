@@ -20,7 +20,7 @@ public class User {
 @NotEmpty(message = "Please provide your password")
     private String hashPassword;
 
-    @Id
+
     @Column(length = 60)
     @Length(min = 5, message = "Your UserName must have at least 5 characters")
     @NotEmpty(message = "Please provide your password")
@@ -57,8 +57,7 @@ public class User {
     }
 
     public void setHashPassword(String hashPassword) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.hashPassword = passwordEncoder.encode(hashPassword);
+        this.hashPassword = hashPassword;
     }
 
     public String getUsername() {

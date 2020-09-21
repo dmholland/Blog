@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@Service
-public class PostServiceStubImpl implements PostService{
+
+public class PostServiceStubImpl implements PostServiceInterface{
 private List<Post> posts = new ArrayList<Post>(){{
     add(new Post(1L, "First Post", "<p>Line #1.</p><p>Line #2</p>", null));
     add(new Post(2L,"Second Post",

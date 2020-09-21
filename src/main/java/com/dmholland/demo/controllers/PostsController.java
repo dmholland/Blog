@@ -4,6 +4,7 @@ package com.dmholland.demo.controllers;
 import com.dmholland.demo.models.Post;
 import com.dmholland.demo.services.NotificationService;
 import com.dmholland.demo.services.PostService;
+import com.dmholland.demo.services.PostServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,7 @@ public class PostsController {
     NotificationService notifyService;
 
     @Autowired
-    private PostService postService;
+    private PostServiceInterface postService;
 
     @RequestMapping("/posts/view/{id}")
     public String view(@PathVariable("id") Long id, Model model){

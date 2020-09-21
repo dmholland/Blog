@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@Table(name="posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +29,7 @@ public class Post {
     public Post() {
     }
 
+
     public Post(Long id, String title, String body, User author) {
         this.id = id;
         this.author = author;
@@ -43,6 +45,9 @@ public class Post {
         this.id = id;
     }
 
+    /**
+     * @return the title
+     */
     public String getTitle() {
         return title;
     }
