@@ -1,0 +1,9 @@
+<authentication-manager>
+    <authentication-provider>
+        <password-encoder hash="bcrypt" />
+    </authentication-provider>
+</authentication-manager>
+
+
+<!--This stuff is kind of new to me. As of right now in Sept 20, 2020; Im not sure how to continue so I
+copied and pasted from Mkyong.com-->
