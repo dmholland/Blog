@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace= "layout::site-head">
+    <title>Blog</title>
+    <meta charset="UTF-8">
+</head>
+<header th:replace= "layout::site-header" ></header>
+    <body>
+
+    <div class="container">
+        <div class="hidden-xs text-center"><img th:src="@{/img/not_there.png}" src="../../public/img/not_there.png"/></div>
+        <div class="text-center">
+            <div><h2>Hmm. Looks like its not available, or made for that matter. We may get there someday...</h2></div>
+        </div>
+    </div><!-- ./ container -->
+
+    <!-- The footer coming from layout -->
+    <footer th:replace="layout::site-footer"></footer>
+    </body>
+</html>
