@@ -40,17 +40,19 @@
 
     <span sec:authorize="isAuthenticated()">
           <a href="posts/create.html" th:href="@{/posts/create}">Create Post</a>
-         <a sec:authorize="hasAuthority('Admin')" href="users/backoffice.html" th:href="@{/users}">BackOffice</a>
+         <a sec:authorize="hasAuthority('ADMIN')" href="users/backoffice.html" th:href="@{/users}">BackOffice</a>
     </span>
 
     <div id="logged-in-info">
-    <div sec:authorize="isAuthenticated()"><span>Hello, <b sec:authentication="name"></b>
+    <div sec:authorize="isAuthenticated()">
+        <span>Hello, <b sec:authentication="name"></b>
         Permission:
         <span sec:authentication="principal.authorities"></span>
         </span>
+
         <a href="#" th:href="@{/users/logout}"><span class="fa fa-sign-out"></span>&nbsp;[Logout]</a>
     </div>
-    </div>
+
 
         <div sec:authorize="!isAuthenticated()">
     <a href="users/login.html" th:href="@{/users/login}">Login</a>
@@ -58,12 +60,6 @@
         </div>
     </div>
 
-
-    <a href="users/index.html" th:href="@{/users}">Users</a>
-
-        <form method="post" th:action="@{/users/logout}">
-            <input type="submit" value="Logout"/>
-        </form>
     </div>
 </header>
 
