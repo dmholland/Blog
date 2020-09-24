@@ -23,7 +23,7 @@ public class RegistrationController {
 
 
     @RequestMapping("/users/registration")
-    public ModelAndView register(){
+    public ModelAndView registration(){
         ModelAndView mv= new ModelAndView();
         User user=new User();
   // User user=repository.createUser(new User());
@@ -34,7 +34,7 @@ public class RegistrationController {
     }
 
     @RequestMapping(value="users/registration",method = RequestMethod.POST)
-    public ModelAndView register(@Valid User user, BindingResult validate){
+    public ModelAndView registration(@Valid User user, BindingResult validate){
         ModelAndView mv=new ModelAndView();
         if(userService.userCheck(user)){//user exists
             validate.rejectValue("userName", "error.user", "User exists");
