@@ -29,11 +29,12 @@ public class LoginController {
         return "users/login";
     }
 
+    //Due to using the spring security, login form is not required in method
     @RequestMapping(value = "/users/login", method = RequestMethod.POST)
-    public String loginPage(@Valid LoginForm loginForm, BindingResult bindingResult) {
+    public String loginPage() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if ((auth instanceof AnonymousAuthenticationToken)) {
-            return "users/login";
+            return "users/backoffice";
         } else {
             notifyService.addErrorMessage("Credentials are not correct");
             return "redirect:/";

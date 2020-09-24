@@ -8,22 +8,28 @@
 <body>
 <header th:replace="layout :: site-header">"Header"</header>
 
-
-
 <h1>Login To See and Create Posts</h1>
-<form method="post" th:action="@{/users/login}">
+<div class="container row">
 
-    <div><label for="username">Username:</label></div>
-    <input id="username" type="text" name="username" th:value="*{username}" />
-    <span class = "formError" th:if="${#fields.hasErrors('username')}"
-          th:errors="*{username}">Invalid username</span>
-    <div><label for="hashPassword" th:value="*{username}">Password:</label></div>
-    <input id="hashPassword" type="password" name="password" th:value="*{password}" />
-    <span class="formError" th:if="${#fields.hasErrors('password')}"
-          th:errors="*{password}">Invalid password</span>
-    <div><input type="submit" value="Login"/>
-        <a href="register.html" th:href="@{/users/register}">[Go to Register]</a></div>
 
+<form method="post" th:action="@{/users/login}" class="form col-md-5 col-md offset-7">
+    <div class="form-group"><label for="username">Username:</label>
+    <input id="username" type="text" name="username" class="form-control" />
+    </div>
+
+
+    <div class="form-group"><label for="hashPassword" >Password:</label>
+    <input id="hashPassword" type="password" name="password" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary pull right" value="Login"/>
+        <a href="registration.html" th:href="@{/users/register}">[Go to Register]</a>
+    </div>
+    <div class="form-group alert alert-danger" th:if="${param.error}">Invalid Username or password</div>
 </form>
+
+
+</div>
 </body>
 </html>
