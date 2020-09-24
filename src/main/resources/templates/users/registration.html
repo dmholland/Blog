@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout::site-head">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -17,34 +17,43 @@
       method="POST" class="form col-md-5 col-md-offset-7">
 
     <div class="form-group">
-        <input type="text" th:field="*{username}"th:placeholder="Insert Handle Name"
-         th:class="${#fields.errors('username')? 'form-control is-invalid' : 'form-control'}" />
+        <input type="text" th:field="*{username}" th:placeholder="Insert Handle Name"
+               th:class="${#fields.errors('username')? 'form-control is-invalid' : 'form-control'}" />
         <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="invalid-feedback"></div>
     </div>
 
 
     <div class="form-group">
         <input type="text" th:field="*{fullName}" th:placeholder="Enter Full Name"
-         th:class="${#fields.errors('fullName') ? 'form-control is-invalid' : 'form-control'}" />
+               th:class="${#fields.errors('fullName') ? 'form-control is-invalid' : 'form-control'}" />
         <label th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="invalid-feedback"></label>
     </div>
+
 
     <div class="form-group">
         <input type="password" th:field="*{hashPassword}" placeholder="Enter your password" th:class="${#fields.hasErrors('passwordHash') ? 'form-control is-invalid' : 'form-control'}" />
         <div th:if="${#fields.hasErrors('hashPassword')}" th:errors="*{hashPassword}" class="invalid-feedback"></div>
     </div>
 
+
+
+
+
+
     <div class="form-group clearfix">
         <button type="submit" class="btn btn-primary float-right">Register User</button>
     </div><!-- Submit Button -->
 
     <div class="form-group">
+
     <div th:class="${successMessage} ? 'alert alert-success' : ''" th:text="${successMessage}"></div>
 </div>
 
 </form>
 </div>
+
 <footer th:replace="layout::site-footer"></footer>
 
 </body>
+
 </html>
