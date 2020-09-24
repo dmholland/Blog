@@ -32,7 +32,7 @@
 
     <div class="form-group">
         <input type="password" th:field="*{hashPassword}" placeholder="Enter your password"
-               th:class="${#fields.hasErrors('passwordHash') ? 'form-control is-invalid' : 'form-control'}" />
+               th:class="${#fields.hasErrors('hashPassword') ? 'form-control is-invalid' : 'form-control'}" />
         <div th:if="${#fields.hasErrors('hashPassword')}" th:errors="*{hashPassword}" class="invalid-feedback"></div>
     </div>
 
