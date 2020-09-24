@@ -2,6 +2,7 @@ package com.dmholland.demo.models;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
@@ -9,20 +10,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)//Identity because it auto increments
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//Identity because it auto increments
     private Long id;
 
-@Column(length = 60)
-@Length(min = 5, message = "Your password must have at least 5 characters")
-@NotEmpty(message = "Please provide your password")
+    @Column(length = 60)
+    @Length(min = 5, message = "Your password must have at least 5 characters")
+    @NotEmpty(message = "Please provide your password")
     private String hashPassword;
 
 
-    @Column(length = 60)
+    @Column(length = 60, unique = true,nullable = false)
     @Length(min = 5, message = "Your UserName must have at least 5 characters")
     @NotEmpty(message = "Please provide your password")
     private String username;
@@ -33,15 +34,17 @@ public class User {
     private String fullName;
 
     @OneToMany(mappedBy = "author")      //Must be a container
-    private Set<Post> posts= new HashSet<>();
+    private Set<Post> posts = new HashSet<>();
 
-    public User(){
-    };
+    public User() {
+    }
 
-    public User(Long id,String username,String fullName){
-        this.id=id;
-        this.username=username;
-        this.fullName=fullName;
+    ;
+
+    public User(Long id, String username, String fullName) {
+        this.id = id;
+        this.username = username;
+        this.fullName = fullName;
 
     }
 
@@ -85,10 +88,10 @@ public class User {
         this.posts = posts;
     }
 
-@Override
-    public String toString(){
-        return "User{" + "id= " + id + ", username='" +username + '\'' +
+    @Override
+    public String toString() {
+        return "User{" + "id= " + id + ", username='" + username + '\'' +
                 ", hashPassword='" + hashPassword + '\'' +
                 ", fullName='" + fullName + '\'' + '}';
-}
+    }
 }

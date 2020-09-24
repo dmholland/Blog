@@ -4,6 +4,8 @@ import com.dmholland.demo.models.Post;
 import com.dmholland.demo.models.User;
 import com.dmholland.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,18 +24,22 @@ public class UserService implements UserServiceInterface{
     }
 
     @Override
+    public Page<User> findAll(Pageable pageable) {
+        return this.repository.findAll(pageable);
+    }
+    @Override
     public User createUser(User user) {
     return this.repository.save(user);
     }
 
     @Override
-    public void deleteUser(User user) {
-         this.repository.delete(user);
+    public void deleteUser(Long Id) {
+         this.repository.delete(findById(Id));
     }
 
     @Override
     public User findById(Long id) {
-        return this.repository.findById(id).orElse(null);
+        return this.repository.getOne(id);
     }
 
     @Override
@@ -54,6 +60,6 @@ public class UserService implements UserServiceInterface{
     }
 
     public boolean userCheck(User user){
-        return this.repository.findById(user.getId()).isPresent();
+        return (null != findByName(user.getUsername()));
     }
 }

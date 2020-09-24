@@ -36,16 +36,17 @@ public class RegistrationController {
     @RequestMapping(value="users/registration",method = RequestMethod.POST)
     public ModelAndView registration(@Valid User user, BindingResult validate){
         ModelAndView mv=new ModelAndView();
-        if(userService.userCheck(user)){//user exists
-            validate.rejectValue("userName", "error.user", "User exists");
-            mv.setViewName("users/registration");
+        mv.setViewName("users/registration");
+        if(this.userService.userCheck(user)){//user exists
+            validate.rejectValue("username", "error.user", "User exists");
             return mv;
         }
-        this.userService.createUser(user);
-        mv.addObject("user",user);
-        mv.addObject("successMessage", "User has been created");
-        mv.addObject("user", new User());
-        mv.setViewName("users/registration");
+     if(!validate.hasErrors()) {
+         this.userService.createUser(user);
+         mv.addObject("user", user);
+         mv.addObject("successMessage", "User has been created");
+         mv.addObject("user", new User());
+     }
         return mv;
 
     }
