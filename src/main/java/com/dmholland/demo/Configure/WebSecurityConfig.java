@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/users/login").failureUrl("/users/login?error=true").defaultSuccessUrl("/")
-                .usernameParameter("userName").passwordParameter("passwordHash")
+                .usernameParameter("username").passwordParameter("hashPassword")
                 .and()
                 .logout()
                 .invalidateHttpSession(true)
