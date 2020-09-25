@@ -43,6 +43,7 @@ public class PostService implements PostServiceInterface {
         return this.postRepository.findById(id).orElse(null);
         // return this.postRepository.getOne(id);
     }
+
     @Override
     public Post create(Post post) {
         return this.postRepository.save(post);
@@ -60,5 +61,10 @@ public class PostService implements PostServiceInterface {
     public boolean isValid(Post post){
         if(null == post.getTitle() ||null == post.getBody() || null == post.getAuthor()){return false;}
         return true;
+    }
+
+    @Override
+    public Page<Post> findAll(Pageable pageable) {
+        return this.postRepository.findAll(pageable);
     }
 }

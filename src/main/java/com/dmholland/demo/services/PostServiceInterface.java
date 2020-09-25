@@ -2,6 +2,8 @@ package com.dmholland.demo.services;
 
 import com.dmholland.demo.models.Post;
 import com.dmholland.demo.repository.PostRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,4 +17,5 @@ public interface PostServiceInterface {
     Post edit(Post post);
     void deleteById(Long id);
     boolean isValid(Post post);
+    Page<Post> findAll(Pageable pageable);
 }
