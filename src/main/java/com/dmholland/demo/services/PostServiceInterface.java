@@ -14,4 +14,5 @@ public interface PostServiceInterface {
     Post create(Post post);
     Post edit(Post post);
     void deleteById(Long id);
+    boolean isValid(Post post);
 }

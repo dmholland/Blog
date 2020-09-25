@@ -55,4 +55,10 @@ public class PostService implements PostServiceInterface {
     public void deleteById(Long id) {
         this.postRepository.deleteById(id);
     }
+
+    @Override
+    public boolean isValid(Post post){
+        if(null == post.getTitle() ||null == post.getBody() || null == post.getAuthor()){return false;}
+        return true;
+    }
 }

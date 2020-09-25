@@ -17,5 +17,5 @@ public interface UserServiceInterface {
  User findByName(String name);
  User editUser(User user);
  Set<Post> findAllPosts(User user);
-
+User findByUserName(String username);
 }
