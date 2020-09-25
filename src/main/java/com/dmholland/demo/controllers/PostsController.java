@@ -77,10 +77,19 @@ public ModelAndView createPosts(@Valid Post post, BindingResult bindingResult){
     }
         return mv;
 }
+    
+
+
+@RequestMapping("/posts/delete/{id}")
+public String delete(@PathVariable("id")Long id){
+    Post post = this.postService.findById(id);
+    if(null==post){
+        notifyService.addErrorMessage("Can not find post # "+id);
+    }else{
+        this.postService.deleteById(id);
     }
-
-
-@RequestMapping("/posts/delete/{id}",method = RequestMethod.DELETE)
+    return "redirect:/posts/";
+}
 
 @RequestMapping("/posts/edit/{id}")
 
