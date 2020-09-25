@@ -25,13 +25,10 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/users/login")
-    public String login(LoginForm loginForm) {
-        return "users/login";
-    }
+  
 
     //Due to using the spring security, login form is not required in method
-    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/login")
     public String loginPage() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if ((auth instanceof AnonymousAuthenticationToken)) {
