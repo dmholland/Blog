@@ -43,7 +43,6 @@ public class RegistrationController {
         }
      if(!validate.hasErrors()) {
          this.userService.createUser(user);
-         mv.addObject("user", user);
          mv.addObject("successMessage", "User has been created");
          mv.addObject("user", new User());
      }

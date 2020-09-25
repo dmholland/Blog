@@ -4,19 +4,24 @@ import com.dmholland.demo.models.Post;
 import com.dmholland.demo.models.User;
 import com.dmholland.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
+@Primary
 public class UserService implements UserServiceInterface{
 
     @Autowired
-    UserRepository repository;
+   private UserRepository repository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public List<User> findAll() {
@@ -27,10 +32,14 @@ public class UserService implements UserServiceInterface{
     public Page<User> findAll(Pageable pageable) {
         return this.repository.findAll(pageable);
     }
+
+
     @Override
     public User createUser(User user) {
-    return this.repository.save(user);
+        user.setHashPassword(bCryptPasswordEncoder.encode(user.getHashPassword()));
+        return this.repository.save(user);
     }
+
 
     @Override
     public void deleteUser(Long Id) {

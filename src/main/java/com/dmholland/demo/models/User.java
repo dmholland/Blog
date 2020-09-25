@@ -23,9 +23,8 @@ public class User {
     private String hashPassword;
 
 
-    @Column(length = 60, unique = true,nullable = false)
-    @Length(min = 5, message = "Your UserName must have at least 5 characters")
-    @NotEmpty(message = "Please provide your password")
+    @Column(nullable = false,length = 60, unique = true)
+    @NotEmpty(message = "Please provide a username")
     private String username;
 
     @Column(length = 60)
@@ -39,7 +38,7 @@ public class User {
     public User() {
     }
 
-    ;
+
 
     public User(Long id, String username, String fullName) {
         this.id = id;
