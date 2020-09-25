@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PostsController {
@@ -31,3 +32,15 @@ public class PostsController {
         return "posts/view";
     }
 }
+
+@RequestMapping("/posts/create")
+
+@RequestMapping(value = "/posts/create", method = RequestMethod.POST)
+
+@RequestMapping("/posts/delete/{id}",method = RequestMethod.DELETE)
+
+@RequestMapping("/posts/edit/{id}")
+
+@RequestMapping(value = "/posts/edit", method = RequestMethod.POST)
+
+@RequestMapping("/posts")
