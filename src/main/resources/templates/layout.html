@@ -40,7 +40,7 @@
 
     <span sec:authorize="isAuthenticated()">
           <a href="posts/create.html" th:href="@{/posts/create}">Create Post</a>
-         <a sec:authorize="hasAuthority('ADMIN')" href="users/backoffice.html" th:href="@{/users}">BackOffice</a>
+         <a sec:authorize="hasAuthority('ADMIN')" href="users/backoffice.html" th:href="@{/users/backoffice}">BackOffice</a>
     </span>
 
     <div id="logged-in-info">
