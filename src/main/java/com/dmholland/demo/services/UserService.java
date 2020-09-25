@@ -69,8 +69,8 @@ public class UserService implements UserServiceInterface{
     }
 
     @Override
-    public User findByUserName(String userName) {
-        return this.repository.findByUserName(userName);}
+    public User findByUserName(String username) {
+        return this.repository.findByusername(username);}
 
     public boolean userCheck(User user){
         return (null != findByName(user.getUsername()));
